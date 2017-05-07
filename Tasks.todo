@@ -4,4 +4,20 @@ Need to do:
   ☐ Add creation of random Vector
   ☐ Add creation of random Matrix
   ☐ Add unit tests
-  ☐ 
+  ☐ Add examples to readme
+  ☐ Add comment to the module
+  ☐ Add doc strings to all methods
+  ☐ Add map method to vector
+  ☐ Add map method to matrix
+  ☐ Add norm method to vector
+  ☐ Add norm method to matrix
+  ☐ Convert Vector.zero method to static method
+  ☐ Convert Matrix.zero method to static method
+  ☐ Add posibility to set vector components by slice
+  ☐ Add __floordiv__ to vector
+  ☐ Add __floordiv__ to matrix
+  ☐ Find all magic functions
+  ☐ Implement sum()
+  ☐ Check vector*matrix
+  ☐ Add creation Vector from str
+  ☐ Add creation Matrix from str
