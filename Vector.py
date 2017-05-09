@@ -55,6 +55,14 @@ class Vector(object):
     return math.sqrt(self*self)
   
   @staticmethod
+  def Zero(size):
+    """Vector.Zero(int) -> zero Vector with specified size"""
+    if isinstance(size, numbers.Integral):
+      return Vector(size)
+    else:
+      raise TypeError("Argument should be an int > 0. {0} passed instead".format(size))
+
+  @staticmethod
   def FromList(x):
     """Vector.FromList(iterable) -> Vector with components from any iterable object, i.e. list"""
     return Vector(x)
@@ -191,7 +199,6 @@ class Vector(object):
       return Vector([x*factor for x in self])
     except:
       return NotImplemented
-      # return other.__rmul__(self)
   
   def __rmul__(self, other):
     """Multiply scalar to vector"""

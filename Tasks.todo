@@ -1,23 +1,34 @@
-Need to do:
-
+Common:
   ☐ Combine Vector and Matrix to one file
-  ☐ Add creation of random Vector
-  ☐ Add creation of random Matrix
   ☐ Add unit tests
   ☐ Add examples to readme
   ☐ Add comment to the module
-  ☐ Add doc strings to all methods
+  ☐ Find all magic functions
+
+Vector:
+
+  ☐ Add creation of random Vector
   ☐ Add map method to vector
-  ☐ Add map method to matrix
   ☐ Add norm method to vector
-  ☐ Add norm method to matrix
   ☐ Convert Vector.zero method to static method
-  ☐ Convert Matrix.zero method to static method
   ☐ Add posibility to set vector components by slice
   ☐ Add __floordiv__ to vector
-  ☐ Add __floordiv__ to matrix
-  ☐ Find all magic functions
   ☐ Implement sum()
   ☐ Check vector*matrix
   ☐ Add creation Vector from str
+  ☐ Add check ortogonality
+  ☐ Add projectTo method
+
+Matrix:
+  ☐ Add creation of random Matrix
+  ☐ Add doc strings to Matrix
   ☐ Add creation Matrix from str
+  ☐ Add __floordiv__ to matrix
+  ☐ Convert Matrix.zero method to static method
+  ☐ Add norm method to matrix
+  ☐ Add map method to matrix
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+  ✔ Add doc strings to Vector @done (17-05-07 23:47) @project(Vector)
