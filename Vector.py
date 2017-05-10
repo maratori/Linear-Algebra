@@ -58,14 +58,28 @@ class Vector(object):
   def Zero(size):
     """Vector.Zero(int) -> zero Vector with specified size"""
     if isinstance(size, numbers.Integral):
-      return Vector(size)
+      if size > 0:
+        return Vector(size)
+      else:
+        raise ValueError("Argument should be an int > 0. {0} passed instead".format(size))
     else:
       raise TypeError("Argument should be an int > 0. {0} passed instead".format(size))
 
   @staticmethod
   def FromList(x):
     """Vector.FromList(iterable) -> Vector with components from any iterable object, i.e. list"""
-    return Vector(x)
+    if not isinstance(x, (numbers.Integral, str, unicode)):
+      return Vector(x)
+    else:
+      raise ValueError("Argument should be an iterable. {0} passed instead".format(type(x)))
+
+  @staticmethod
+  def Parse(value):
+    """Vector.Parse(str) -> Vector"""
+    if isinstance(value, (str, unicode)):
+      return NotImplemented
+    else:
+      raise: TypeError("Argument should be a string. {0} passed instead".format((type(value))))
   
   def asList(self):
     """Get list of components.\nvector.asList() <==> vector.values"""

@@ -10,7 +10,6 @@ Vector:
   ☐ Add creation of random Vector
   ☐ Add map method to vector
   ☐ Add norm method to vector
-  ☐ Convert Vector.zero method to static method
   ☐ Add posibility to set vector components by slice
   ☐ Add __floordiv__ to vector
   ☐ Implement sum()
@@ -18,6 +17,7 @@ Vector:
   ☐ Add creation Vector from str
   ☐ Add check ortogonality
   ☐ Add projectTo method
+  ☐ Implement string parsing
 
 Matrix:
   ☐ Add creation of random Matrix
@@ -31,4 +31,6 @@ Matrix:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Convert Vector.zero method to static method @done (17-05-10 23:02) @project(Vector)
+  ✔ Add Parse method @done (17-05-10 22:56) @project(Vector)
   ✔ Add doc strings to Vector @done (17-05-07 23:47) @project(Vector)
