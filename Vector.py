@@ -68,10 +68,10 @@ class Vector(object):
   @staticmethod
   def FromList(x):
     """Vector.FromList(iterable) -> Vector with components from any iterable object, i.e. list"""
-    if not isinstance(x, (numbers.Integral, str, unicode)):
+    if not isinstance(x, (numbers.Number, str, unicode)):
       return Vector(x)
     else:
-      raise ValueError("Argument should be an iterable. {0} passed instead".format(type(x)))
+      raise TypeError("Argument should be an iterable. {0} passed instead".format(type(x)))
 
   @staticmethod
   def Parse(value):
@@ -79,7 +79,7 @@ class Vector(object):
     if isinstance(value, (str, unicode)):
       return NotImplemented
     else:
-      raise: TypeError("Argument should be a string. {0} passed instead".format((type(value))))
+      raise TypeError("Argument should be a string. {0} passed instead".format((type(value))))
   
   def asList(self):
     """Get list of components.\nvector.asList() <==> vector.values"""
