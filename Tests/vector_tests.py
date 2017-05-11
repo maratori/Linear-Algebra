@@ -53,6 +53,7 @@ class TestVectorConstructor(unittest.TestCase):
     with self.assertRaises(VectorError):
       Vector(-10.)
 
+
 class TestVectorFactories(unittest.TestCase):
 
   def test_Zero(self):
@@ -146,6 +147,7 @@ class TestVectorFactories(unittest.TestCase):
     with self.assertRaises(TypeError):
       Vector.Parse(iter([1,2,3]))
 
+
 class TestVectorProperties(unittest.TestCase):
 
   def test_size(self):
@@ -189,6 +191,26 @@ class TestVectorProperties(unittest.TestCase):
       Vector(5).magnitude = 5
     with self.assertRaises(AttributeError):
       del Vector(5).magnitude
+
+
+class TestVectorTestingMethods(unittest.TestCase):
+
+  def test_isZero(self):
+    for i in range(1, 100):
+      self.assertTrue(Vector(i).isZero())
+    self.assertFalse(Vector([1,2,3]).isZero())
+
+  def test_isNormalized(self):
+    for i in range(1, 10):
+      for j in range(i):
+        myList = [0]*i
+        myList[j] = 1
+        self.assertTrue(Vector(myList).isNormalized())
+    for i in range(1, 100):
+      self.assertFalse(Vector(i).isNormalized())
+    self.assertFalse(Vector([1,2,3]).isNormalized())
+    self.assertFalse(Vector([1./math.sqrt(2)]*2).isNormalized())
+
 
 class TestVectorBuiltinFunctions(unittest.TestCase):
 

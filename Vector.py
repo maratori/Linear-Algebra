@@ -81,6 +81,14 @@ class Vector(object):
     else:
       raise TypeError("Argument should be a string. {0} passed instead".format((type(value))))
   
+  def isZero(self):
+    """Check if all components are zero"""
+    return self == 0
+  
+  def isNormalized(self):
+    """Check if vector magnitude == 1"""
+    return self.magnitude == 1
+  
   def asList(self):
     """Get list of components.\nvector.asList() <==> vector.values"""
     return self.values
@@ -116,18 +124,6 @@ class Vector(object):
   def trunc(self):
     """Get vector with truncated components (see help(trunc))"""
     return Vector(map(math.trunc, self))
-  
-  def zero(self):
-    """Get zero vector of the same size"""
-    return Vector(len(self))
-  
-  def isZero(self):
-    """Check if all components are zero"""
-    return self == 0
-  
-  def isNormalized(self):
-    """Check if vector magnitude == 1"""
-    return self.magnitude == 1
   
   def normalize(self):
     """Get normalized vector"""

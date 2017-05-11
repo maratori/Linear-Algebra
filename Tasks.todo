@@ -18,6 +18,7 @@ Vector:
   ☐ Add check ortogonality
   ☐ Add projectTo method
   ☐ Implement string parsing
+  ☐ Add tolerance to Vector.isZero and Vector.isNormalized
 
 Matrix:
   ☐ Add creation of random Matrix
