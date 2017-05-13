@@ -212,6 +212,83 @@ class TestVectorTestingMethods(unittest.TestCase):
     self.assertFalse(Vector([1./math.sqrt(2)]*2).isNormalized())
 
 
+class TestVectorOtherMethods(unittest.TestCase):
+
+  def test_asList(self):
+    self.assertEqual(Vector([1,2,3]).asList(), [1,2,3])
+    self.assertEqual(Vector([1,2,3,4]).asList(), [1,2,3,4])
+  
+  def test_dot(self):
+    self.assertEqual(Vector([2]).dot(Vector([4])), 8)
+    self.assertEqual(Vector([2,5]).dot(Vector([4,7])), 43)
+    self.assertEqual(Vector([1,2,3]).dot(Vector([4,5,6])), 32)
+
+    with self.assertRaises(VectorError):
+      Vector([1,2,3]).dot(Vector([4,5]))
+    with self.assertRaises(VectorError):
+      Vector([1]).dot(Vector([4,5]))
+    with self.assertRaises(VectorError):
+      Vector([1]).dot(Vector([4,5,7]))
+  
+  def test_cross(self):
+    self.assertEqual(Vector([1,2,3]).cross(Vector([4,5,6])).values, [-3, 6, -3])
+
+    with self.assertRaises(NotImplementedError):
+      Vector([5]).cross(None)
+    with self.assertRaises(NotImplementedError):
+      Vector([1,2]).cross(None)
+    with self.assertRaises(NotImplementedError):
+      Vector([1,2,3,4]).cross(None)
+    with self.assertRaises(NotImplementedError):
+      Vector([1,2,3,4,5]).cross(None)
+
+    with self.assertRaises(TypeError):
+      Vector([1,2,3]).cross(None)
+    with self.assertRaises(TypeError):
+      Vector([1,2,3]).cross(10)
+    with self.assertRaises(TypeError):
+      Vector([1,2,3]).cross(True)
+    with self.assertRaises(TypeError):
+      Vector([1,2,3]).cross([1,2,3])
+
+    with self.assertRaises(ValueError):
+      Vector([1,2,3]).cross(Vector([1]))
+    with self.assertRaises(ValueError):
+      Vector([1,2,3]).cross(Vector([1,2]))
+    with self.assertRaises(ValueError):
+      Vector([1,2,3]).cross(Vector([1,2,3,4]))
+    with self.assertRaises(ValueError):
+      Vector([1,2,3]).cross(Vector([1,2,3,4,5]))
+  
+  def test_round(self, ndigits=0):
+    self.assertEqual(Vector([1.34, 4.56, -3.89]).round().values, [1, 5, -4])
+    self.assertEqual(Vector([1.34, 4.56, -3.89]).round(1).values, [1.3, 4.6, -3.9])
+    self.assertEqual(Vector([1.34, 4.56, -3.89]).round(2).values, [1.34, 4.56, -3.89])
+    self.assertEqual(Vector([1.34, 4.56, -3.89]).round(3).values, [1.34, 4.56, -3.89])
+    self.assertEqual(Vector([1.34, 54.56, -23.89]).round(-1).values, [0, 50, -20])
+  
+  def test_floor(self):
+    self.assertEqual(Vector([1.34, 4.56, -3.89]).floor().values, [1, 4, -4])
+  
+  def test_ceil(self):
+    self.assertEqual(Vector([1.34, 4.56, -3.89]).ceil().values, [2, 5, -3])
+  
+  def test_trunc(self):
+    self.assertEqual(Vector([1.34, 4.56, -3.89]).trunc().values, [1, 4, -3])
+  
+  def test_normalize(self):
+    self.assertEqual(Vector([1]).normalize().values, [1])
+    self.assertEqual(Vector([35.456]).normalize().values, [1])
+    self.assertAlmostEqual(Vector([-0.453]).normalize().values[0], -1)
+
+    with self.assertRaises(ZeroDivisionError):
+      Vector([0]).normalize()
+    with self.assertRaises(ZeroDivisionError):
+      Vector([0,0]).normalize()
+    with self.assertRaises(ZeroDivisionError):
+      Vector([0,0,0]).normalize()
+
+
 class TestVectorBuiltinFunctions(unittest.TestCase):
 
   def test_len(self):
@@ -234,7 +311,139 @@ class TestVectorBuiltinFunctions(unittest.TestCase):
   def test_getitem(self):
     myList = [random.uniform(-50, 50) for i in xrange(50)]
     vec = Vector(myList)
-    self.assertTrue(all(myList[i] == vec[i] for i in xrange(len(myList))))
+    for i, v in enumerate(myList):
+      self.assertEqual(vec[i], v)
+    self.assertEqual(vec[-5], myList[-5])
+    with self.assertRaises(IndexError):
+      vec[100]
+
+  def test_setitem(self):
+    v = Vector(5)
+    v[0] = 14
+    self.assertEqual(v.values, [14,0,0,0,0])
+    v[4] = 65
+    self.assertEqual(v.values, [14,0,0,0,65])
+    v[-3] = 10
+    self.assertEqual(v.values, [14,0,10,0,65])
+    with self.assertRaises(IndexError):
+      v[6] = 10
+    v[3] = 98
+    self.assertEqual(v.values, [14,0,10,98,65])
+
+
+class TestVectorOperators(unittest.TestCase):
+  
+  def test_eq(self):
+    self.assertTrue(Vector(5) == Vector(5))
+    self.assertFalse(Vector(5) == None)
+    self.assertTrue(Vector(5) == 0)
+    with self.assertRaises(ValueError):
+      Vector(5) == 10
+    with self.assertRaises(ValueError):
+      Vector(5) == -1.6
+    self.assertTrue(Vector([4,5,6]) == Vector([4,5,6]))
+    self.assertFalse(Vector([4,5,6]) == Vector([4,5,6,3]))
+  
+  def test_ne(self):
+    self.assertFalse(Vector(5) != Vector(5))
+    self.assertTrue(Vector(5) != None)
+    self.assertFalse(Vector(5) != 0)
+    with self.assertRaises(ValueError):
+      Vector(5) != 10
+    with self.assertRaises(ValueError):
+      Vector(5) != -1.6
+    self.assertFalse(Vector([4,5,6]) != Vector([4,5,6]))
+    self.assertTrue(Vector([4,5,6]) != Vector([4,5,6,3]))
+  
+  def test_pos(self):
+    self.assertEqual((+Vector([4,-5,6])).values, [4,-5,6])
+  
+  def test_neg(self):
+    self.assertEqual((-Vector([4,-5,6])).values, [-4,5,-6])
+  
+  def test_add(self):
+    with self.assertRaises(TypeError):
+      Vector(5) + None
+    with self.assertRaises(TypeError):
+      Vector(5) + 4
+    with self.assertRaises(TypeError):
+      Vector(5) + "asd"
+    with self.assertRaises(TypeError):
+      Vector(5) + [1,2,3]
+    with self.assertRaises(VectorError):
+      Vector(5) + Vector(3)
+    self.assertEqual((Vector([1,2,3])+Vector([4,-5,6])).values, [5,-3,9])
+  
+  def test_sub(self):
+    with self.assertRaises(TypeError):
+      Vector(5) - None
+    with self.assertRaises(TypeError):
+      Vector(5) - 4
+    with self.assertRaises(TypeError):
+      Vector(5) - "asd"
+    with self.assertRaises(TypeError):
+      Vector(5) - [1,2,3]
+    with self.assertRaises(VectorError):
+      Vector(5) - Vector(3)
+    self.assertEqual((Vector([1,2,3])-Vector([4,-5,6])).values, [-3,7,-3])
+  
+  def test_mul(self):
+    self.assertEqual(Vector([2]) * Vector([4]), 8)
+    self.assertEqual(Vector([2,5]) * Vector([4,7]), 43)
+    self.assertEqual(Vector([1,2,3]) * Vector([4,5,6]), 32)
+    self.assertEqual((Vector([1,2,3]) * 5).values, [5,10,15])
+    self.assertEqual((Vector([1,0,-3]) * -7.8).values, [-7.8,0,23.4])
+
+    with self.assertRaises(VectorError):
+      Vector([1,2,3]) * Vector([4,5])
+    with self.assertRaises(VectorError):
+      Vector([1]) * Vector([4,5])
+    with self.assertRaises(VectorError):
+      Vector([1]) * Vector([4,5,7])
+    with self.assertRaises(TypeError):
+      Vector(5) * None
+    with self.assertRaises(TypeError):
+      Vector(5) * "asd"
+    with self.assertRaises(TypeError):
+      Vector(5) * [1,2,3]
+  
+  def test_rmul(self):
+    self.assertEqual((5 * Vector([1,2,3])).values, [5,10,15])
+    self.assertEqual((-7.8 * Vector([1,0,-3])).values, [-7.8,0,23.4])
+
+    with self.assertRaises(TypeError):
+      None * Vector(5)
+    with self.assertRaises(TypeError):
+      "asd" * Vector(5)
+    with self.assertRaises(TypeError):
+      [1,2,3] * Vector(5)
+  
+  def test_div(self):
+    self.assertEqual((Vector([1,2,5]) / 5).values, [0.2,0.4,1])
+
+    with self.assertRaises(ZeroDivisionError):
+      Vector(5) / 0
+    with self.assertRaises(ZeroDivisionError):
+      Vector(5) / 0.0
+
+    with self.assertRaises(TypeError):
+      Vector([1,2,3]) / Vector([4,5])
+    with self.assertRaises(TypeError):
+      Vector(5) / None
+    with self.assertRaises(TypeError):
+      Vector(5) / "asd"
+    with self.assertRaises(TypeError):
+      Vector(5) / [1,2,3]
+  
+  def test_rdiv(self):
+    with self.assertRaises(TypeError):
+      5 / Vector(5)
+    with self.assertRaises(TypeError):
+      None / Vector(5)
+    with self.assertRaises(TypeError):
+      "asd" / Vector(5)
+    with self.assertRaises(TypeError):
+      [1,2,3] / Vector(5)
 
 if __name__ == '__main__':
   unittest.main()

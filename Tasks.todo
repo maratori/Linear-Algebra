@@ -1,12 +1,11 @@
 Common:
   ☐ Combine Vector and Matrix to one file
-  ☐ Add unit tests
   ☐ Add examples to readme
   ☐ Add comment to the module
   ☐ Find all magic functions
 
-Vector:
 
+Vector:
   ☐ Add creation of random Vector
   ☐ Add map method to vector
   ☐ Add norm method to vector
@@ -21,6 +20,7 @@ Vector:
   ☐ Add tolerance to Vector.isZero and Vector.isNormalized
 
 Matrix:
+  ☐ Add unit tests for Matrix
   ☐ Add creation of random Matrix
   ☐ Add doc strings to Matrix
   ☐ Add creation Matrix from str
@@ -32,6 +32,7 @@ Matrix:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Add unit tests for Vector @done (17-05-13 20:38) @project(Vector)
   ✔ Convert Vector.zero method to static method @done (17-05-10 23:02) @project(Vector)
   ✔ Add Parse method @done (17-05-10 22:56) @project(Vector)
   ✔ Add doc strings to Vector @done (17-05-07 23:47) @project(Vector)

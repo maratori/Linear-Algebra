@@ -212,11 +212,16 @@ class Vector(object):
   
   def __rmul__(self, other):
     """Multiply scalar to vector"""
-    return self*float(other)
+    try:
+      return self*float(other)
+    except:
+      return NotImplemented
   
   def __div__(self, other):
     """Divide vector to scalar"""
     try:
-      return self*(1/float(other))
+      return self*(1./float(other))
+    except ZeroDivisionError:
+      raise
     except:
       return NotImplemented
