@@ -1,0 +1,38 @@
+Common:
+  ☐ Add comment to the module
+  ☐ Find all magic functions
+
+
+Vector:
+  ☐ Add creation of random Vector
+  ☐ Add map method to vector
+  ☐ Add norm method to vector
+  ☐ Add posibility to set vector components by slice
+  ☐ Add __floordiv__ to vector
+  ☐ Implement sum()
+  ☐ Check vector*matrix
+  ☐ Add creation Vector from str
+  ☐ Add check ortogonality
+  ☐ Add projectTo method
+  ☐ Implement string parsing
+  ☐ Add tolerance to Vector.isZero and Vector.isNormalized
+
+Matrix:
+  ☐ Add unit tests for Matrix
+  ☐ Add creation of random Matrix
+  ☐ Add doc strings to Matrix
+  ☐ Add creation Matrix from str
+  ☐ Add __floordiv__ to matrix
+  ☐ Convert Matrix.zero method to static method
+  ☐ Add norm method to matrix
+  ☐ Add map method to matrix
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+  ✔ Combine Vector and Matrix to one file @done (17-05-14 21:24) @project(Common)
+  ✔ Add examples to readme @done (17-05-14 21:24) @project(Common)
+  ✔ Add unit tests for Vector @done (17-05-13 20:38) @project(Vector)
+  ✔ Convert Vector.zero method to static method @done (17-05-10 23:02) @project(Vector)
+  ✔ Add Parse method @done (17-05-10 22:56) @project(Vector)
+  ✔ Add doc strings to Vector @done (17-05-07 23:47) @project(Vector)
