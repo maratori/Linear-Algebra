@@ -105,7 +105,7 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 
 ## Changelog
 
-### v0.1.0 - 2017-05-14
+### 0.1.0 [2017-05-14]
 - Vector class
 - Vectors comparison
 - All operations with vectors (`+`, `-`, `*`, `/`, `.dot`, `.cross`)
