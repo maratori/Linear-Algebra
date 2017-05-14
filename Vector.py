@@ -1,3 +1,12 @@
+"""Linear Algebra Python Module
+
+TBD
+"""
+
+__all__ = ["Vector", "VectorError"]
+__version__ = "0.1.0"
+__author__ = "Marat Reymers"
+
 import math
 import numbers
 
@@ -14,7 +23,11 @@ class Vector(object):
     Constructors:
       Vector(int) -> zero Vector with specified size
       Vector(iterable) -> Vector with components from any iterable object, i.e. list
+      Vector(str) not implemented yet
+
+      Vector.Zero(int) <==> Vector(int)
       Vector.FromList(iterable) <==> Vector(iterable)
+      Vector.Parse(str) <==> Vector(str)
   """
   
   def __init__(self, arg):
@@ -23,6 +36,7 @@ class Vector(object):
 
       Vector(int) -> zero Vector with specified size
       Vector(iterable) -> Vector with components from any iterable object, i.e. list
+      Vector(str) not implemented yet
     """
     if isinstance(arg, numbers.Integral):
       if arg > 0:
@@ -39,6 +53,11 @@ class Vector(object):
       if len(self._vals) == 0:
         raise VectorError("Vector size should be positive.")
   
+
+  #=============
+  #  Properties 
+  #=============
+
   @property
   def size(self):
     """int: read-only vector size (number of components).\nvector.size <==> len(vector)"""
@@ -53,6 +72,11 @@ class Vector(object):
   def magnitude(self):
     """float: read-only vector magnitude (Euclidean norm)"""
     return math.sqrt(self*self)
+  
+  
+  #=================
+  #  Static methods 
+  #=================
   
   @staticmethod
   def Zero(size):
@@ -81,6 +105,11 @@ class Vector(object):
     else:
       raise TypeError("Argument should be a string. {0} passed instead".format((type(value))))
   
+  
+  #========
+  #  Tests 
+  #========
+  
   def isZero(self):
     """Check if all components are zero"""
     return self == 0
@@ -89,9 +118,19 @@ class Vector(object):
     """Check if vector magnitude == 1"""
     return self.magnitude == 1
   
+  
+  #============
+  #  Get parts 
+  #============
+  
   def asList(self):
     """Get list of components.\nvector.asList() <==> vector.values"""
     return self.values
+  
+  
+  #=================
+  #  Linear algebra 
+  #=================
   
   def dot(self, other):
     """Get dot product self and passed vector."""
@@ -108,6 +147,11 @@ class Vector(object):
     if len(other) != 3:
       raise ValueError("Cross product is defined only for vectors of size 3. Passed vector has size {0}".format(len(other)))
     return Vector([self[1]*other[2]-self[2]*other[1], self[2]*other[0]-self[0]*other[2], self[0]*other[1]-self[1]*other[0]])
+  
+  
+  #===============
+  #  Get modified 
+  #===============
   
   def round(self, ndigits=0):
     """Get vector with rounded components (see help(round))"""
@@ -129,6 +173,11 @@ class Vector(object):
     """Get normalized vector"""
     return self/self.magnitude
   
+  
+  #=================
+  #  Representation 
+  #=================
+  
   def __str__(self):
     """Get string to print vector by str()"""
     return ", ".join(map(str, self))
@@ -137,13 +186,18 @@ class Vector(object):
     """Get string to represent vector by repr()"""
     return "Vector(" + repr(self._vals) + ")"
   
-  def __iter__(self):
-    """Get iterator over the components"""
-    return iter(self._vals)
+  
+  #===============
+  #  Items access 
+  #===============
   
   def __len__(self):
     """Get vector size by len()"""
     return len(self._vals)
+  
+  def __iter__(self):
+    """Get iterator over the components"""
+    return iter(self._vals)
   
   def __getitem__(self, key):
     """Get component by index or Vector by slice"""
@@ -158,6 +212,11 @@ class Vector(object):
       raise TypeError("Can't modify vector by slice")
     else:
       self._vals[key] = float(value)
+  
+  
+  #============
+  #  Operators 
+  #============
   
   def __eq__(self, other):
     """Check for equality"""
