@@ -16,7 +16,7 @@ Single-file python module **linear_algebra.py** implements basic `Vector` class.
 
 ## Usage
 
-- Copy file linear_algebra.py to your project
+- Copy file `linear_algebra.py` to your project
 - Use `from linear_algebra import *`
 - Use `Vector` class
 
@@ -86,21 +86,21 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 - Vector.ceil() -> Vector
 - Vector.trunc() -> Vector
 - Vector.normalize() -> Vector
-- Vector.__str__() -> str
-- Vector.__repr__() -> str
-- Vector.__len__() -> int
-- Vector.__iter__() -> iter
-- Vector.__getitem__(key) -> float or Vector
-- Vector.__setitem__(key, value)
-- Vector.__eq__(other) -> bool
-- Vector.__ne__(other) -> bool
-- Vector.__pos__() -> Vector
-- Vector.__neg__() -> Vector
-- Vector.__add__(other) -> Vector
-- Vector.__sub__(other) -> Vector
-- Vector.__mul__(other) -> Vector or float
-- Vector.__rmul__(other) -> Vector
-- Vector.__div__(other) -> Vector
+- Vector.`__str__`() -> str
+- Vector.`__repr__`() -> str
+- Vector.`__len__`() -> int
+- Vector.`__iter__`() -> iter
+- Vector.`__getitem__`(key) -> float or Vector
+- Vector.`__setitem__`(key, value)
+- Vector.`__eq__`(other) -> bool
+- Vector.`__ne__`(other) -> bool
+- Vector.`__pos__`() -> Vector
+- Vector.`__neg__`() -> Vector
+- Vector.`__add__`(other) -> Vector
+- Vector.`__sub__`(other) -> Vector
+- Vector.`__mul__`(other) -> Vector or float
+- Vector.`__rmul__`(other) -> Vector
+- Vector.`__div__`(other) -> Vector
 
 
 ## Changelog
