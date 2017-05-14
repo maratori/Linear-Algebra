@@ -1,6 +1,4 @@
 Common:
-  ☐ Combine Vector and Matrix to one file
-  ☐ Add examples to readme
   ☐ Add comment to the module
   ☐ Find all magic functions
 
@@ -32,6 +30,8 @@ Matrix:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Combine Vector and Matrix to one file @done (17-05-14 21:24) @project(Common)
+  ✔ Add examples to readme @done (17-05-14 21:24) @project(Common)
   ✔ Add unit tests for Vector @done (17-05-13 20:38) @project(Vector)
   ✔ Convert Vector.zero method to static method @done (17-05-10 23:02) @project(Vector)
   ✔ Add Parse method @done (17-05-10 22:56) @project(Vector)
