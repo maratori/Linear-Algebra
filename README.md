@@ -65,27 +65,27 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 
 ### Static Methods
 
-- Vector.Zero(int) -> Vector
-- Vector.FromList(iterable) -> Vector
+- Vector.`Zero`(int) -> Vector
+- Vector.`FromList`(iterable) -> Vector
 
 ### Properties
 
-- Vector.size -> int
-- Vector.values -> list
-- Vector.magnitude -> float
+- Vector.`size` -> int
+- Vector.`values` -> list
+- Vector.`magnitude` -> float
 
 ### Methods
 
-- Vector.isZero() -> bool
-- Vector.isNormalized() -> bool
-- Vector.asList() -> list
-- Vector.dot(other) -> float
-- Vector.cross(other) -> Vector
-- Vector.round(ndigits=0) -> Vector
-- Vector.floor() -> Vector
-- Vector.ceil() -> Vector
-- Vector.trunc() -> Vector
-- Vector.normalize() -> Vector
+- Vector.`isZero`() -> bool
+- Vector.`isNormalized`() -> bool
+- Vector.`asList`() -> list
+- Vector.`dot`(other) -> float
+- Vector.`cross`(other) -> Vector
+- Vector.`round`(ndigits=0) -> Vector
+- Vector.`floor`() -> Vector
+- Vector.`ceil`() -> Vector
+- Vector.`trunc`() -> Vector
+- Vector.`normalize`() -> Vector
 - Vector.`__str__`() -> str
 - Vector.`__repr__`() -> str
 - Vector.`__len__`() -> int
@@ -109,6 +109,7 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 - Vector class
 - Vectors comparison
 - All operations with vectors (`+`, `-`, `*`, `/`, `.dot`, `.cross`)
+- Other vector methods
 
 
 > _Readme last update 2017-05-14_
