@@ -20,14 +20,17 @@ Single-file python module **linear_algebra.py** implements basic `Vector` and `M
 - Matrix * Matrix
 - Matrix * Vector
 - Vector * Matrix
-- Matrix.
+- Matrix.transpose()
+- Matrix.trace()
+- Matrix.det()
+- Matrix.eigenvalues()
 
 
 ## Usage
 
 - Copy file `linear_algebra.py` to your project
 - Use `from linear_algebra import *`
-- Use `Vector` class
+- Use `Vector` and `Matrix` classes
 
 
 ## Examples
@@ -68,6 +71,17 @@ v5.isNormalized() # True
 v6 = Vector([2, 5, 7])
 v7 = Vector([3, 1, 2])
 v6.cross(v7) == Vector([3, 17, -13]) # True
+```
+
+```python
+from linear_algebra import *
+
+m1 = Matrix(2, 3) # zero matrix with 2 rows and 3 columns
+m2 = Matrix.Zero(2, 3) # zero matrix with 2 rows and 3 columns
+m1 == m2 # True
+m1.size == (2, 3) # True
+m1.isZero() # True
+m1 == 0 # True
 ```
 
 ## List of all attributes
@@ -174,11 +188,22 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 
 ## Changelog
 
+### 0.2.0 [2017-05-15]
+
+- Add `Matrix` class
+- Add comparison of matrices
+- Add all operations with matrices (`+`, `-`, `*`, `/`)
+- Add matrix*vector and vector*matrix
+- Add other matrix methods
+- Fix some comments
+- Fix vector_tests.py
+
 ### 0.1.0 [2017-05-14]
-- Vector class
-- Vectors comparison
-- All operations with vectors (`+`, `-`, `*`, `/`, `.dot`, `.cross`)
-- Other vector methods
+
+- Add `Vector` class
+- Add comparison of vectors
+- Add all operations with vectors (`+`, `-`, `*`, `/`, `.dot`, `.cross`)
+- Add other vector methods
 
 
-> _Readme last update 2017-05-14_
+> _Readme last update 2017-05-15_

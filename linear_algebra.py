@@ -1,10 +1,10 @@
-"""Linear Algebra Python Module
-
-TBD
+"""Linear Algebra Module v0.2.0 [2017-05-15]
+Module implements Vector and Matrix classes.
+Repository: https://github.com/Maratori/Linear-Algebra
 """
 
 __all__ = ["Vector", "Matrix", "VectorError", "MatrixError"]
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Marat Reymers"
 
 import math
