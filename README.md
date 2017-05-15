@@ -70,51 +70,49 @@ v7 = Vector([3, 1, 2])
 v6.cross(v7) == Vector([3, 17, -13]) # True
 ```
 
-<details> 
-<summary>
-
 ## Vector Attributes
 
-</summary>
+<details>
+<summary>Show</summary>
 
-### Static Methods
-
-- Vector.`Zero`(int) -> Vector
-- Vector.`FromList`(iterable) -> Vector
-
-### Properties
-
-- Vector.`size` -> int
-- Vector.`values` -> list
-- Vector.`magnitude` -> float
-
-### Methods
-
-- Vector.`isZero`() -> bool
-- Vector.`isNormalized`() -> bool
-- Vector.`asList`() -> list
-- Vector.`dot`(other) -> float
-- Vector.`cross`(other) -> Vector
-- Vector.`round`(ndigits=0) -> Vector
-- Vector.`floor`() -> Vector
-- Vector.`ceil`() -> Vector
-- Vector.`trunc`() -> Vector
-- Vector.`normalize`() -> Vector
-- Vector.`__str__`() -> str
-- Vector.`__repr__`() -> str
-- Vector.`__len__`() -> int
-- Vector.`__iter__`() -> iter
-- Vector.`__getitem__`(key) -> float or Vector
-- Vector.`__setitem__`(key, value)
-- Vector.`__eq__`(other) -> bool
-- Vector.`__ne__`(other) -> bool
-- Vector.`__pos__`() -> Vector
-- Vector.`__neg__`() -> Vector
-- Vector.`__add__`(other) -> Vector
-- Vector.`__sub__`(other) -> Vector
-- Vector.`__mul__`(other) -> Vector or float
-- Vector.`__rmul__`(other) -> Vector
-- Vector.`__div__`(other) -> Vector
+> ### Static Methods
+> 
+> - Vector.`Zero`(int) -> Vector
+> - Vector.`FromList`(iterable) -> Vector
+> 
+> ### Properties
+> 
+> - Vector.`size` -> int
+> - Vector.`values` -> list
+> - Vector.`magnitude` -> float
+> 
+> ### Methods
+> 
+> - Vector.`isZero`() -> bool
+> - Vector.`isNormalized`() -> bool
+> - Vector.`asList`() -> list
+> - Vector.`dot`(other) -> float
+> - Vector.`cross`(other) -> Vector
+> - Vector.`round`(ndigits=0) -> Vector
+> - Vector.`floor`() -> Vector
+> - Vector.`ceil`() -> Vector
+> - Vector.`trunc`() -> Vector
+> - Vector.`normalize`() -> Vector
+> - Vector.`__str__`() -> str
+> - Vector.`__repr__`() -> str
+> - Vector.`__len__`() -> int
+> - Vector.`__iter__`() -> iter
+> - Vector.`__getitem__`(key) -> float or Vector
+> - Vector.`__setitem__`(key, value)
+> - Vector.`__eq__`(other) -> bool
+> - Vector.`__ne__`(other) -> bool
+> - Vector.`__pos__`() -> Vector
+> - Vector.`__neg__`() -> Vector
+> - Vector.`__add__`(other) -> Vector
+> - Vector.`__sub__`(other) -> Vector
+> - Vector.`__mul__`(other) -> Vector or float
+> - Vector.`__rmul__`(other) -> Vector
+> - Vector.`__div__`(other) -> Vector
 
 </details>
 
