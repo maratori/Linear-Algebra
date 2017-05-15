@@ -72,7 +72,9 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 
 <details> 
 <summary>
+
 ## Vector Attributes
+
 </summary>
 
 ### Static Methods
