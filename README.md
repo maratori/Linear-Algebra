@@ -70,23 +70,23 @@ v7 = Vector([3, 1, 2])
 v6.cross(v7) == Vector([3, 17, -13]) # True
 ```
 
-## Vector Attributes
+## List of all attributes
 
 <details>
 <summary>Show</summary>
 
-> ### Static Methods
+> ### Vector Static Methods
 > 
 > - Vector.`Zero`(int) -> Vector
 > - Vector.`FromList`(iterable) -> Vector
 > 
-> ### Properties
+> ### Vector Properties
 > 
 > - Vector.`size` -> int
 > - Vector.`values` -> list
 > - Vector.`magnitude` -> float
 > 
-> ### Methods
+> ### Vector Methods
 > 
 > - Vector.`isZero`() -> bool
 > - Vector.`isNormalized`() -> bool
@@ -114,64 +114,62 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 > - Vector.`__rmul__`(other) -> Vector
 > - Vector.`__div__`(other) -> Vector
 
+> ### Matrix Static Methods
+> 
+> - Matrix.`Zero`(int, int) -> Matrix
+> - Matrix.`Identity`(int) -> Matrix
+> - Matrix.`FromListOfRows`(iterable) -> Matrix
+> - Matrix.`FromListOfCols`(iterable) -> Matrix
+> - Matrix.`RowFromVector`(iterable) -> Matrix
+> - Matrix.`ColFromVector`(iterable) -> Matrix
+> - Matrix.`Diagonal`(iterable) -> Matrix
+> 
+> ### Matrix Properties
+> 
+> - Matrix.`size` -> tuple
+> - Matrix.`m` -> int
+> - Matrix.`n` -> int
+> - Matrix.`rows` -> list
+> - Matrix.`cols` -> list
+> 
+> ### Matrix Methods
+> 
+> - Matrix.`isZero`() -> bool
+> - Matrix.`isIdentity`() -> bool
+> - Matrix.`isScalar`() -> bool
+> - Matrix.`isVector`() -> bool
+> - Matrix.`isSquare`() -> bool
+> - Matrix.`isDiagonal`() -> bool
+> - Matrix.`isSymmetric`() -> bool
+> - Matrix.`asList`() -> list
+> - Matrix.`getRow`(n) -> Vector
+> - Matrix.`getCol`(n) -> Vector
+> - Matrix.`getDiagonal`() -> Vector
+> - Matrix.`asScalar`() -> float
+> - Matrix.`asVector`() -> Vector
+> - Matrix.`transpose`() -> Matrix
+> - Matrix.`round`(n=0) -> Matrix
+> - Matrix.`floor`() -> Matrix
+> - Matrix.`ceil`() -> Matrix
+> - Matrix.`trunc`() -> Matrix
+> - Matrix.`trace`() -> float
+> - Matrix.`det`() -> float
+> - Matrix.`eigenvalues`() -> list
+> - Matrix.`__str__`() -> str
+> - Matrix.`__repr__`() -> str
+> - Matrix.`__getitem__`(key) -> float
+> - Matrix.`__setitem__`(key, value)
+> - Matrix.`__eq__`(other) -> bool
+> - Matrix.`__ne__`(other) -> bool
+> - Matrix.`__pos__`() -> Matrix
+> - Matrix.`__neg__`() -> Matrix
+> - Matrix.`__add__`(other) -> Matrix
+> - Matrix.`__sub__`(other) -> Matrix
+> - Matrix.`__mul__`(other) -> Matrix
+> - Matrix.`__rmul__`(other) -> Matrix
+> - Matrix.`__div__`(other) -> Matrix
+
 </details>
-
-## Matrix Attributes
-
-### Static Methods
-
-- Matrix.`Zero`(int, int) -> Matrix
-- Matrix.`Identity`(int) -> Matrix
-- Matrix.`FromListOfRows`(iterable) -> Matrix
-- Matrix.`FromListOfCols`(iterable) -> Matrix
-- Matrix.`RowFromVector`(iterable) -> Matrix
-- Matrix.`ColFromVector`(iterable) -> Matrix
-- Matrix.`Diagonal`(iterable) -> Matrix
-
-### Properties
-
-- Matrix.`size` -> tuple
-- Matrix.`m` -> int
-- Matrix.`n` -> int
-- Matrix.`rows` -> list
-- Matrix.`cols` -> list
-
-### Methods
-
-- Matrix.`isZero`() -> bool
-- Matrix.`isIdentity`() -> bool
-- Matrix.`isScalar`() -> bool
-- Matrix.`isVector`() -> bool
-- Matrix.`isSquare`() -> bool
-- Matrix.`isDiagonal`() -> bool
-- Matrix.`isSymmetric`() -> bool
-- Matrix.`asList`() -> list
-- Matrix.`getRow`(n) -> Vector
-- Matrix.`getCol`(n) -> Vector
-- Matrix.`getDiagonal`() -> Vector
-- Matrix.`asScalar`() -> float
-- Matrix.`asVector`() -> Vector
-- Matrix.`transpose`() -> Matrix
-- Matrix.`round`(n=0) -> Matrix
-- Matrix.`floor`() -> Matrix
-- Matrix.`ceil`() -> Matrix
-- Matrix.`trunc`() -> Matrix
-- Matrix.`trace`() -> float
-- Matrix.`det`() -> float
-- Matrix.`eigenvalues`() -> list
-- Matrix.`__str__`() -> str
-- Matrix.`__repr__`() -> str
-- Matrix.`__getitem__`(key) -> float
-- Matrix.`__setitem__`(key, value)
-- Matrix.`__eq__`(other) -> bool
-- Matrix.`__ne__`(other) -> bool
-- Matrix.`__pos__`() -> Matrix
-- Matrix.`__neg__`() -> Matrix
-- Matrix.`__add__`(other) -> Matrix
-- Matrix.`__sub__`(other) -> Matrix
-- Matrix.`__mul__`(other) -> Matrix
-- Matrix.`__rmul__`(other) -> Matrix
-- Matrix.`__div__`(other) -> Matrix
 
 
 ## Changelog
