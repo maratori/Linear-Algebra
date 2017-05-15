@@ -35,6 +35,8 @@ Single-file python module **linear_algebra.py** implements basic `Vector` and `M
 
 ## Examples
 
+### Working with Vector
+
 ```python
 from linear_algebra import *
 
@@ -72,6 +74,8 @@ v6 = Vector([2, 5, 7])
 v7 = Vector([3, 1, 2])
 v6.cross(v7) == Vector([3, 17, -13]) # True
 ```
+
+### Working with Matrix
 
 ```python
 from linear_algebra import *
