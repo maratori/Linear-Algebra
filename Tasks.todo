@@ -5,10 +5,10 @@ Common:
 
 Vector:
   ☐ Add creation of random Vector
-  ☐ Add map method to vector
-  ☐ Add norm method to vector
+  ☐ Add map method
+  ☐ Add norm method
   ☐ Add posibility to set vector components by slice
-  ☐ Add __floordiv__ to vector
+  ☐ Add __floordiv__
   ☐ Implement sum()
   ☐ Check vector*matrix
   ☐ Add creation Vector from str
@@ -18,21 +18,25 @@ Vector:
   ☐ Add tolerance to Vector.isZero and Vector.isNormalized
 
 Matrix:
-  ☐ Add unit tests for Matrix
+  ☐ Add unit tests
   ☐ Add creation of random Matrix
-  ☐ Add doc strings to Matrix
+  ☐ Add doc strings
   ☐ Add creation Matrix from str
-  ☐ Add __floordiv__ to matrix
+  ☐ Add __floordiv__
   ☐ Convert Matrix.zero method to static method
-  ☐ Add norm method to matrix
-  ☐ Add map method to matrix
+  ☐ Add norm method
+  ☐ Add map method
+  ☐ Add isNormalized method
+  ☐ Add normalize method
+  ☐ Add inverse method
+  ☐ Implement eigenvalues for all types of matrices
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
   ✔ Combine Vector and Matrix to one file @done (17-05-14 21:24) @project(Common)
   ✔ Add examples to readme @done (17-05-14 21:24) @project(Common)
-  ✔ Add unit tests for Vector @done (17-05-13 20:38) @project(Vector)
+  ✔ Add unit tests @done (17-05-13 20:38) @project(Vector)
   ✔ Convert Vector.zero method to static method @done (17-05-10 23:02) @project(Vector)
   ✔ Add Parse method @done (17-05-10 22:56) @project(Vector)
-  ✔ Add doc strings to Vector @done (17-05-07 23:47) @project(Vector)
+  ✔ Add doc strings @done (17-05-07 23:47) @project(Vector)

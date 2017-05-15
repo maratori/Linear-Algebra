@@ -2,6 +2,7 @@ import unittest
 import sys
 import os
 import random
+import math
 sys.path.append(os.path.abspath(".."))
 from linear_algebra import *
 
