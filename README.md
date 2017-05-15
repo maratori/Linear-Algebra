@@ -1,6 +1,6 @@
 # Linear Algebra Python Module
 
-Single-file python module **linear_algebra.py** implements basic `Vector` class.
+Single-file python module **linear_algebra.py** implements basic `Vector` and `Matrix` classes.
 
 
 ## Features
@@ -12,6 +12,15 @@ Single-file python module **linear_algebra.py** implements basic `Vector` class.
 - Vector * Vector <==> Vector.dot(Vector)
 - Vector.cross(Vector)
 - Vector.normalize()
+
+- Matrix + Matrix
+- Matrix - Matrix
+- Matrix * number
+- Matrix / number
+- Matrix * Matrix
+- Matrix * Vector
+- Vector * Matrix
+- Matrix.
 
 
 ## Usage
@@ -61,7 +70,10 @@ v7 = Vector([3, 1, 2])
 v6.cross(v7) == Vector([3, 17, -13]) # True
 ```
 
+<details> 
+<summary>
 ## Vector Attributes
+</summary>
 
 ### Static Methods
 
@@ -101,6 +113,65 @@ v6.cross(v7) == Vector([3, 17, -13]) # True
 - Vector.`__mul__`(other) -> Vector or float
 - Vector.`__rmul__`(other) -> Vector
 - Vector.`__div__`(other) -> Vector
+
+</details>
+
+## Matrix Attributes
+
+### Static Methods
+
+- Matrix.`Zero`(int, int) -> Matrix
+- Matrix.`Identity`(int) -> Matrix
+- Matrix.`FromListOfRows`(iterable) -> Matrix
+- Matrix.`FromListOfCols`(iterable) -> Matrix
+- Matrix.`RowFromVector`(iterable) -> Matrix
+- Matrix.`ColFromVector`(iterable) -> Matrix
+- Matrix.`Diagonal`(iterable) -> Matrix
+
+### Properties
+
+- Matrix.`size` -> tuple
+- Matrix.`m` -> int
+- Matrix.`n` -> int
+- Matrix.`rows` -> list
+- Matrix.`cols` -> list
+
+### Methods
+
+- Matrix.`isZero`() -> bool
+- Matrix.`isIdentity`() -> bool
+- Matrix.`isScalar`() -> bool
+- Matrix.`isVector`() -> bool
+- Matrix.`isSquare`() -> bool
+- Matrix.`isDiagonal`() -> bool
+- Matrix.`isSymmetric`() -> bool
+- Matrix.`asList`() -> list
+- Matrix.`getRow`(n) -> Vector
+- Matrix.`getCol`(n) -> Vector
+- Matrix.`getDiagonal`() -> Vector
+- Matrix.`asScalar`() -> float
+- Matrix.`asVector`() -> Vector
+- Matrix.`transpose`() -> Matrix
+- Matrix.`round`(n=0) -> Matrix
+- Matrix.`floor`() -> Matrix
+- Matrix.`ceil`() -> Matrix
+- Matrix.`trunc`() -> Matrix
+- Matrix.`trace`() -> float
+- Matrix.`det`() -> float
+- Matrix.`eigenvalues`() -> list
+- Matrix.`__str__`() -> str
+- Matrix.`__repr__`() -> str
+- Matrix.`__getitem__`(key) -> float
+- Matrix.`__setitem__`(key, value)
+- Matrix.`__eq__`(other) -> bool
+- Matrix.`__ne__`(other) -> bool
+- Matrix.`__pos__`() -> Matrix
+- Matrix.`__neg__`() -> Matrix
+- Matrix.`__add__`(other) -> Matrix
+- Matrix.`__sub__`(other) -> Matrix
+- Matrix.`__mul__`(other) -> Matrix
+- Matrix.`__rmul__`(other) -> Matrix
+- Matrix.`__div__`(other) -> Matrix
 
 
 ## Changelog
