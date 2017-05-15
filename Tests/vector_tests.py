@@ -3,7 +3,7 @@ import sys
 import os
 import random
 sys.path.append(os.path.abspath(".."))
-from Vector import *
+from linear_algebra import *
 
 class TestVectorConstructor(unittest.TestCase):
 
