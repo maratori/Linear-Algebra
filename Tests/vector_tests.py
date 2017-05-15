@@ -2,8 +2,9 @@ import unittest
 import sys
 import os
 import random
+import math
 sys.path.append(os.path.abspath(".."))
-from Vector import *
+from linear_algebra import *
 
 class TestVectorConstructor(unittest.TestCase):
 
