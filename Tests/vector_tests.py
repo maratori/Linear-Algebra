@@ -35,15 +35,15 @@ class TestVectorConstructor(unittest.TestCase):
     self.assertEqual(Vector(iter([1,2,3])).values, [1,2,3])
 
   def test_str(self):
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector("")
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector("1,2,3")
 
   def test_unicode(self):
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector(u"")
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector(u"1,2,3")
 
   def test_float(self):
@@ -261,7 +261,7 @@ class TestVectorOtherMethods(unittest.TestCase):
     with self.assertRaises(ValueError):
       Vector([1,2,3]).cross(Vector([1,2,3,4,5]))
   
-  def test_round(self, ndigits=0):
+  def test_round(self):
     self.assertEqual(Vector([1.34, 4.56, -3.89]).round().values, [1, 5, -4])
     self.assertEqual(Vector([1.34, 4.56, -3.89]).round(1).values, [1.3, 4.6, -3.9])
     self.assertEqual(Vector([1.34, 4.56, -3.89]).round(2).values, [1.34, 4.56, -3.89])
