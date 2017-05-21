@@ -5,21 +5,15 @@ Single-file python module **linear_algebra.py** implements basic `Vector` and `M
 
 ## Features
 
-- Vector + Vector
-- Vector - Vector
-- Vector * number
-- Vector / number
-- Vector * Vector <==> Vector.dot(Vector)
+- Vector*number, Vector/number
+- Vector+Vector, Vector-Vector
+- Vector*Vector <==> Vector.dot(Vector)
 - Vector.cross(Vector)
 - Vector.normalize()
 
-- Matrix + Matrix
-- Matrix - Matrix
-- Matrix * number
-- Matrix / number
-- Matrix * Matrix
-- Matrix * Vector
-- Vector * Matrix
+- Matrix*number, Matrix/number
+- Matrix+Matrix, Matrix-Matrix
+- Matrix*Matrix, Matrix*Vector, Vector*Matrix
 - Matrix.transpose()
 - Matrix.trace()
 - Matrix.det()
@@ -192,7 +186,7 @@ m1 == 0 # True
 
 ## Changelog
 
-### 0.2.0 [2017-05-15]
+### 0.2.0 [2017-05-20]
 
 - Add `Matrix` class
 - Add comparison of matrices
@@ -210,4 +204,4 @@ m1 == 0 # True
 - Add other vector methods
 
 
-> _Readme last update 2017-05-15_
+> _Readme last update 2017-05-20_
