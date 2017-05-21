@@ -80,6 +80,28 @@ m1 == m2 # True
 m1.size == (2, 3) # True
 m1.isZero() # True
 m1 == 0 # True
+
+m3 = Matrix.Identity(3) # identity matrix 3x3
+m4 = Matrix([[1,0,0], [0,1,0], [0,0,1]]) # identity matrix 3x3
+m3 == m4 # True
+m3.size == (3, 3) # True
+m3.isIdentity() # True
+m3 == 1 # True
+
+m5 = Matrix.FromListOfRows([[1,2,3], [4,5,6]]) # matrix from list of rows
+m6 = Matrix.FromListOfCols([[1,4], [2,5], [3,6]]) # matrix from list of columns
+m5 == m6 # True
+print m5 # [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+repr(m5) == "Matrix([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])" # True
+
+m7 = Matrix.RowFromVector([1,2,3])
+m8 = Matrix.ColFromVector([1,2,3])
+print m7 # [[1.0, 2.0, 3.0]]
+print m8 # [[1.0], [2.0], [3.0]]
+m7.transpose() == m8 # True
+
+m9 = Matrix.Diagonal([1,2,3])
+print m9 # [[1.0, 0.0, 0.0], [0.0, 2.0, 0.0], [0.0, 0.0, 3.0]]
 ```
 
 ## List of all attributes
@@ -186,15 +208,17 @@ m1 == 0 # True
 
 ## Changelog
 
-### 0.2.0 [2017-05-20]
+### 0.2.0 [2017-05-21]
 
 - Add `Matrix` class
 - Add comparison of matrices
 - Add all operations with matrices (`+`, `-`, `*`, `/`)
 - Add matrix*vector and vector*matrix
 - Add other matrix methods
+- Add matrix_tests.py
 - Fix some comments
 - Fix vector_tests.py
+- Eigenvalues implemented for matrices: diagonal, 2x2, symmetric 3x3
 
 ### 0.1.0 [2017-05-14]
 
@@ -204,4 +228,4 @@ m1 == 0 # True
 - Add other vector methods
 
 
-> _Readme last update 2017-05-20_
+> _Readme last update 2017-05-21_
