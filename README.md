@@ -181,6 +181,7 @@ m5 * Vector([1,2,3]) == Matrix([[17], [32]]) # True
 > - Vector.`__pos__`() -> Vector
 > - Vector.`__neg__`() -> Vector
 > - Vector.`__add__`(other) -> Vector
+> - Vector.`__radd__`(other) -> Vector
 > - Vector.`__sub__`(other) -> Vector
 > - Vector.`__mul__`(other) -> Vector or float
 > - Vector.`__rmul__`(other) -> Vector
@@ -236,6 +237,7 @@ m5 * Vector([1,2,3]) == Matrix([[17], [32]]) # True
 > - Matrix.`__pos__`() -> Matrix
 > - Matrix.`__neg__`() -> Matrix
 > - Matrix.`__add__`(other) -> Matrix
+> - Matrix.`__radd__`(other) -> Matrix
 > - Matrix.`__sub__`(other) -> Matrix
 > - Matrix.`__mul__`(other) -> Matrix
 > - Matrix.`__rmul__`(other) -> Matrix
@@ -246,7 +248,7 @@ m5 * Vector([1,2,3]) == Matrix([[17], [32]]) # True
 
 ## Changelog
 
-### 0.2.0 [2017-05-21]
+### 0.2.0 [2017-05-22]
 
 - Add `Matrix` class
 - Add comparison of matrices
@@ -254,6 +256,7 @@ m5 * Vector([1,2,3]) == Matrix([[17], [32]]) # True
 - Add matrix*vector and vector*matrix
 - Add other matrix methods
 - Add matrix_tests.py
+- Add support of sum function
 - Fix some comments
 - Fix vector_tests.py
 - Eigenvalues implemented for matrices: diagonal, 2x2, symmetric 3x3
@@ -266,4 +269,4 @@ m5 * Vector([1,2,3]) == Matrix([[17], [32]]) # True
 - Add other vector methods
 
 
-> _Readme last update 2017-05-21_
+> _Readme last update 2017-05-22_

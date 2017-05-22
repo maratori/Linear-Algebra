@@ -1,4 +1,4 @@
-"""Linear Algebra Module v0.2.0 [2017-05-15]
+"""Linear Algebra Module v0.2.0 [2017-05-22]
 Module implements Vector and Matrix classes.
 See readme at github.
 Repository: https://github.com/Maratori/Linear-Algebra
@@ -253,6 +253,15 @@ class Vector(object):
     if len(self) != len(other):
       raise VectorError("Can't add vectors of different size")
     return Vector([sum(pair) for pair in zip(self, other)])
+
+  def __radd__(self, other):
+    """Add vector to vector or 0 to vector"""
+    if isinstance(other, numbers.Integral) and other == 0:
+      return Vector(self)
+    elif isinstance(other, Vector):
+      return self + other
+    else:
+      return NotImplemented
   
   def __sub__(self, other):
     """Substract vector from vector"""
@@ -702,6 +711,15 @@ class Matrix(object):
     if self.size != other.size:
       raise MatrixError("Trying to add matrixes of different size")
     return Matrix([[sum(pair) for pair in zip(self._vals[x], other._vals[x])] for x in xrange(self.m)])
+
+  def __radd__(self, other):
+    """Add matrix to matrix or 0 to matrix"""
+    if isinstance(other, numbers.Integral) and other == 0:
+      return Matrix(self._vals)
+    elif isinstance(other, Matrix):
+      return self + other
+    else:
+      return NotImplemented
   
   def __sub__(self, other):
     """Subtract matrix from matrix"""
