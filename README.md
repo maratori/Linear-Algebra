@@ -253,13 +253,13 @@ m5 * Vector([1,2,3]) == Matrix([[17], [32]]) # True
 - Add `Matrix` class
 - Add comparison of matrices
 - Add all operations with matrices (`+`, `-`, `*`, `/`)
-- Add matrix*vector and vector*matrix
+- Add matrix`*`vector and vector`*`matrix
 - Add other matrix methods
 - Add matrix_tests.py
 - Add support of sum function
 - Fix some comments
 - Fix vector_tests.py
-- Eigenvalues implemented for matrices: diagonal, 2x2, symmetric 3x3
+- Known Limitation: Eigenvalues implemented for matrices: diagonal, 2x2, symmetric 3x3
 
 ### 0.1.0 [2017-05-14]
 
