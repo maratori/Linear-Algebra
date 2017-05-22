@@ -5,19 +5,19 @@ Single-file python module **linear_algebra.py** implements basic `Vector` and `M
 
 ## Features
 
-- Vector*number, Vector/number
-- Vector+Vector, Vector-Vector
-- Vector*Vector <==> Vector.dot(Vector)
-- Vector.cross(Vector)
-- Vector.normalize()
+- Vector `*` number, Vector `/` number
+- Vector `+` Vector, Vector `-` Vector
+- Vector `*` Vector <==> Vector.`dot`(Vector)
+- Vector.`cross`(Vector)
+- Vector.`normalize`()
 
-- Matrix*number, Matrix/number
-- Matrix+Matrix, Matrix-Matrix
-- Matrix*Matrix, Matrix*Vector, Vector*Matrix
-- Matrix.transpose()
-- Matrix.trace()
-- Matrix.det()
-- Matrix.eigenvalues()
+- Matrix `*` number, Matrix `/` number
+- Matrix `+` Matrix, Matrix `-` Matrix
+- Matrix `*` Matrix, Matrix `*` Vector, Vector `*` Matrix
+- Matrix.`transpose`()
+- Matrix.`trace`()
+- Matrix.`det`()
+- Matrix.`eigenvalues`()
 
 
 ## Usage
