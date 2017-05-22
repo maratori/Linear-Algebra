@@ -37,6 +37,8 @@ from linear_algebra import *
 v1 = Vector(5) # zero vector with 5 components
 v2 = Vector.Zero(5) # zero vector with 5 components
 v1 == v2 # True
+print v1 # 0.0, 0.0, 0.0, 0.0, 0.0
+print repr(v1) # Vector([0.0, 0.0, 0.0, 0.0, 0.0])
 v1.size == 5 # True
 v1.magnitude == 0 # True
 v1.values == [0, 0, 0, 0, 0] # True
@@ -46,10 +48,10 @@ v1 == 0 # True
 v3 = Vector([2, 5, -6, 4]) # vector form list
 v4 = Vector.FromList([2, 5, -6, 4]) # vector form list
 v3 == v4 # True
+print v3 # 2.0, 5.0, -6.0, 4.0
+print repr(v3) # Vector([2.0, 5.0, -6.0, 4.0])
 v3.size == 4 # True
 v3.magnitude == 9 # True
-print v3 # 2.0, 5.0, -6.0, 4.0
-repr(v3) == "Vector([2.0, 5.0, -6.0, 4.0])" # True
 
 v3 - v4 == 0 # True
 v3 + v4 == 2 * v3 # True
@@ -59,7 +61,7 @@ v3 * v4 == 81 # True
 v3.dot(v4) == 81 # True
 
 v5 = v3.normalize()
-print v5 # 0.2222222222222222, 0.5555555555555556, -0.6666666666666666, 0.4444444444444444
+print v5 # 0.222222222222, 0.555555555556, -0.666666666667, 0.444444444444
 v5 == v3 / v3.magnitude # True
 v5.magnitude == 1 # True
 v5.isNormalized() # True
@@ -77,31 +79,67 @@ from linear_algebra import *
 m1 = Matrix(2, 3) # zero matrix with 2 rows and 3 columns
 m2 = Matrix.Zero(2, 3) # zero matrix with 2 rows and 3 columns
 m1 == m2 # True
+print m1 # [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+print repr(m1) # Matrix([[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]])
 m1.size == (2, 3) # True
+m1.m == 2 # True
+m1.n == 3 # True
 m1.isZero() # True
 m1 == 0 # True
 
-m3 = Matrix.Identity(3) # identity matrix 3x3
-m4 = Matrix([[1,0,0], [0,1,0], [0,0,1]]) # identity matrix 3x3
+m3 = Matrix([[1,0,0], [0,1,0], [0,0,1]]) # matrix from list of rows 3x3
+m4 = Matrix.Identity(3) # identity matrix 3x3
 m3 == m4 # True
 m3.size == (3, 3) # True
+m3.isSquare() # True
+m3.isDiagonal() # True
 m3.isIdentity() # True
 m3 == 1 # True
 
-m5 = Matrix.FromListOfRows([[1,2,3], [4,5,6]]) # matrix from list of rows
-m6 = Matrix.FromListOfCols([[1,4], [2,5], [3,6]]) # matrix from list of columns
+m5 = Matrix([[1,2,4], [4,5,6]]) # matrix from list of rows
+m6 = Matrix.FromListOfRows([[1,2,4], [4,5,6]]) # matrix from list of rows
+m7 = Matrix.FromListOfCols([[1,4], [2,5], [4,6]]) # matrix from list of columns
 m5 == m6 # True
-print m5 # [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
-repr(m5) == "Matrix([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])" # True
+m5 == m7 # True
+print m5 # [[1.0, 2.0, 4.0], [4.0, 5.0, 6.0]]
+print repr(m5) # Matrix([[1.0, 2.0, 4.0], [4.0, 5.0, 6.0]])
+m5.rows == [Vector([1,2,4]), Vector([4,5,6])] # True
+m5.cols == [Vector([1,4]), Vector([2,5]), Vector([4,6])] # True
+m5.getDiagonal() == Vector([1,5]) # True
 
-m7 = Matrix.RowFromVector([1,2,3])
-m8 = Matrix.ColFromVector([1,2,3])
-print m7 # [[1.0, 2.0, 3.0]]
-print m8 # [[1.0], [2.0], [3.0]]
-m7.transpose() == m8 # True
+m8 = Matrix.RowFromVector([1,2,3])
+m9 = Matrix.ColFromVector([1,2,3])
+print m8 # [[1.0, 2.0, 3.0]]
+print m9 # [[1.0], [2.0], [3.0]]
+m8.transpose() == m9 # True
+m8.isVector() # True
+m9.isVector() # True
+m8.asVector() == Vector([1,2,3]) # True
+m9.asVector() == Vector([1,2,3]) # True
 
-m9 = Matrix.Diagonal([1,2,3])
-print m9 # [[1.0, 0.0, 0.0], [0.0, 2.0, 0.0], [0.0, 0.0, 3.0]]
+m10 = Matrix.Diagonal([1,2,3])
+print m10 # [[1.0, 0.0, 0.0], [0.0, 2.0, 0.0], [0.0, 0.0, 3.0]]
+m10.isSquare() # True
+m10.isDiagonal() # True
+m10.getDiagonal() == Vector([1,2,3]) # True
+
+m11 = Matrix([[1,2,3], [2,4,5], [3,5,6]])
+print m11 # [[1.0, 2.0, 3.0], [2.0, 4.0, 5.0], [3.0, 5.0, 6.0]]
+m11.isSquare() # True
+m11.isSymmetric() # True
+m11.transpose() == m11 # True
+m11.trace() == 11 # True
+m11.det() == -1 # True
+
+m5 - m6 == 0 # True
+m5 + m1 == m5 # True
+m5 + m6 == 2 * m5 # True
+m5 / 2 == Matrix([[0.5,1,2], [2,2.5,3]]) # True
+m5 * m3 == m5 # True
+m8 * m11 == Matrix([[14, 25, 31]]) # True
+m5 * m9 == Matrix([[17], [32]]) # True
+Vector([1,2,3]) * m11 == Matrix([[14, 25, 31]]) # True
+m5 * Vector([1,2,3]) == Matrix([[17], [32]]) # True
 ```
 
 ## List of all attributes
