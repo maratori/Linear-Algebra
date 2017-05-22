@@ -361,6 +361,19 @@ class TestMatrixBuiltinFunctions(unittest.TestCase):
     m[1,2] = 98
     self.assertEqual(m.asList(), [[14,0,0], [0,0,98], [0,10,0], [0,0,0], [0,65,0]])
 
+  def test_sum(self):
+    self.assertEqual(sum([Matrix([[4,5],[3,2]]), Matrix([[1,2],[7,6]]), Matrix([[7,1],[5,9]])]), Matrix([[12,8],[15,17]]))
+    with self.assertRaises(TypeError):
+      sum(Matrix([[4,5],[3,2]]))
+    with self.assertRaises(TypeError):
+      sum([Matrix([[4,5],[3,2]]), 3, Matrix([[7,1],[5,9]])])
+    with self.assertRaises(TypeError):
+      sum([Matrix([[4,5],[3,2]]), [[1,2],[7,6]], Matrix([[7,1],[5,9]])])
+    with self.assertRaises(TypeError):
+      sum([Matrix([[4,5],[3,2]]), "123", Matrix([[7,1],[5,9]])])
+    with self.assertRaises(MatrixError):
+      sum([Matrix([[4,5],[3,2]]), Matrix([[1,2],[7,6],[5,6]]), Matrix([[7,1],[5,9]])])
+
 
 class TestMatrixOperators(unittest.TestCase):
   

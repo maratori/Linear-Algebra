@@ -331,6 +331,18 @@ class TestVectorBuiltinFunctions(unittest.TestCase):
     v[3] = 98
     self.assertEqual(v.values, [14,0,10,98,65])
 
+  def test_sum(self):
+    self.assertEqual(sum(Vector([4,5,3,2])), 14)
+    self.assertEqual(sum([Vector([4,5,3,2]), Vector([1,2,7,6]), Vector([7,1,5,9])]), Vector([12,8,15,17]))
+    with self.assertRaises(TypeError):
+      sum([Vector([4,5,3,2]), 3, Vector([7,1,5,9])])
+    with self.assertRaises(TypeError):
+      sum([Vector([4,5,3,2]), [1,2,7,6], Vector([7,1,5,9])])
+    with self.assertRaises(TypeError):
+      sum([Vector([4,5,3,2]), "1,2,3", Vector([7,1,5,9])])
+    with self.assertRaises(VectorError):
+      sum([Vector([4,5,3,2]), Vector([1,2,7]), Vector([7,1,5,9])])
+
 
 class TestVectorOperators(unittest.TestCase):
   
