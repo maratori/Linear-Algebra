@@ -1,5 +1,6 @@
-"""Linear Algebra Module v0.2.0 [2017-05-15]
+"""Linear Algebra Module v0.2.0 [2017-05-22]
 Module implements Vector and Matrix classes.
+See readme at github.
 Repository: https://github.com/Maratori/Linear-Algebra
 """
 
@@ -48,7 +49,7 @@ class Vector(object):
       else:
         raise ValueError("Argument should be an int > 0 or iterable object. {0} passed instead".format(arg))
     elif isinstance(arg, (str, unicode)):
-      raise TypeError("Argument should be an int > 0 or iterable object. {0} passed instead".format(arg))
+      raise NotImplementedError("Argument should be an int > 0 or iterable object. {0} passed instead".format(arg))
     else:
       try:
         self._vals = [float(x) for x in arg]
@@ -252,6 +253,15 @@ class Vector(object):
     if len(self) != len(other):
       raise VectorError("Can't add vectors of different size")
     return Vector([sum(pair) for pair in zip(self, other)])
+
+  def __radd__(self, other):
+    """Add vector to vector or 0 to vector"""
+    if isinstance(other, numbers.Integral) and other == 0:
+      return Vector(self)
+    elif isinstance(other, Vector):
+      return self + other
+    else:
+      return NotImplemented
   
   def __sub__(self, other):
     """Substract vector from vector"""
@@ -325,9 +335,9 @@ class Matrix(object):
         self._columnsCount = args[1]
         self._vals = [[0.]*self._columnsCount for x in xrange(self._rowsCount)]
       else:
-        raise ValueError("Two arguments passed. Both should be an int > 0. {0} and {1} passed instead".format(arg[0], arg[1]))
+        raise ValueError("Two arguments passed. Both should be an int > 0. {0} and {1} passed instead".format(args[0], args[1]))
     elif len(args) == 1:
-      if isinstance(arg, (str, unicode)):
+      if isinstance(args[0], (str, unicode)):
         raise NotImplementedError
       else:
         try:
@@ -336,9 +346,13 @@ class Matrix(object):
           self._vals = [[float(x) for x in row] for row in args[0]]
         except:
           raise MatrixError("Can't create matrix.")
+        if len(self._vals) == 0:
+          raise MatrixError("Matrix size should be positive.")
         for row in self._vals:
           if len(row) != self._columnsCount:
             raise MatrixError("Can't create matrix.")
+          if len(row) == 0:
+            raise MatrixError("Matrix size should be positive.")
     else:
       raise TypeError("Wrong numbers of arguments. Should be 1 or 2. {0} passed".format(len(args)))
   
@@ -377,7 +391,7 @@ class Matrix(object):
   #=================
   
   @staticmethod
-  def Zero(self, m, n):
+  def Zero(m, n):
     """Matrix.Zero(int, int) -> zero Matrix with specified number of rows and columns"""
     if isinstance(m, numbers.Integral) and isinstance(n, numbers.Integral):
       if m > 0 and n > 0:
@@ -524,13 +538,9 @@ class Matrix(object):
     """Get transposed matrix"""
     return Matrix(zip(*self._vals))
   
-  def round(self, n=0):
+  def round(self, ndigits=0):
     """Get matrix with rounded components (see help(round))"""
-    res = self.zero()
-    for i in xrange(res.m):
-      for j in xrange(res.n):
-        res[i,j] = round(self[i,j], n)
-    return res
+    return Matrix(map(lambda row: map(lambda x: round(x, ndigits), row), self._vals))
   
   def floor(self):
     """Get matrix with floored components (see help(math.floor))"""
@@ -634,7 +644,7 @@ class Matrix(object):
     """Get component by index (tuple)"""
     if isinstance(key, slice):
       raise TypeError("Can't get item by slice")
-    elif isinstance(key, tuple):
+    elif isinstance(key, (tuple,list)):
       if len(key) == 2:
         return self._vals[key[0]][key[1]]
       else:
@@ -646,7 +656,7 @@ class Matrix(object):
     """Modify component by index (tuple)"""
     if isinstance(key, slice):
       raise TypeError("Can't modify by slice")
-    elif isinstance(key, tuple):
+    elif isinstance(key, (tuple,list)):
       if len(key) == 2:
         self._vals[key[0]][key[1]] = float(value)
       else:
@@ -664,7 +674,7 @@ class Matrix(object):
     if other is None:
       return False
     if not isinstance(other, Matrix):
-      if isinstance(other, int):
+      if isinstance(other, (int, float)):
         if other == 0:
           return all(x==0 for x in sum(zip(*self._vals),()))
         elif other == 1:
@@ -679,7 +689,7 @@ class Matrix(object):
                 if self[(i,j)] != 0:
                   return False
           return True
-      return NotImplemented
+      raise ValueError("Can't compare matrix and '{0.__name__}'".format(type(other)))
     return other._vals == self._vals
   
   def __ne__(self, other):
@@ -697,15 +707,24 @@ class Matrix(object):
   def __add__(self, other):
     """Add matrix to matrix"""
     if not isinstance(other, Matrix):
-      other = Matrix(other)
+      return NotImplemented
     if self.size != other.size:
       raise MatrixError("Trying to add matrixes of different size")
     return Matrix([[sum(pair) for pair in zip(self._vals[x], other._vals[x])] for x in xrange(self.m)])
+
+  def __radd__(self, other):
+    """Add matrix to matrix or 0 to matrix"""
+    if isinstance(other, numbers.Integral) and other == 0:
+      return Matrix(self._vals)
+    elif isinstance(other, Matrix):
+      return self + other
+    else:
+      return NotImplemented
   
   def __sub__(self, other):
     """Subtract matrix from matrix"""
     if not isinstance(other, Matrix):
-      other = Matrix(other)
+      return NotImplemented
     if self.size != other.size:
       raise MatrixError("Trying to substract matrixes of different size")
     return self+(-other)
@@ -724,8 +743,11 @@ class Matrix(object):
       if self.n != other.size:
         raise MatrixError("Matrices cannot be multipled. Sizes are inconsistent")
       return self*Matrix.ColFromVector(other)
-    factor = float(other)
-    return Matrix([[x*factor for x in row] for row in self._vals])
+    try:
+      factor = float(other)
+      return Matrix([[x*factor for x in row] for row in self._vals])
+    except:
+      return NotImplemented
   
   def __rmul__(self, other):
     """Multiply scalar to matrix or vector to matrix"""
@@ -733,10 +755,16 @@ class Matrix(object):
       if self.m != other.size:
         raise MatrixError("Matrices cannot be multipled. Sizes are inconsistent")
       return Matrix.RowFromVector(other)*self
-    return self*float(other)
+    try:
+      return self*float(other)
+    except:
+      return NotImplemented
   
   def __div__(self, other):
     """Divide matrix to scalar"""
-    if isinstance(other, Matrix):
-      raise MatrixError("Can't divide matrises")
-    return self*(1.0/other)
+    try:
+      return self*(1.0/float(other))
+    except ZeroDivisionError:
+      raise
+    except:
+      return NotImplemented
