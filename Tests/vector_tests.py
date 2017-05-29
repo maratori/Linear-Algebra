@@ -2,8 +2,9 @@ import unittest
 import sys
 import os
 import random
+import math
 sys.path.append(os.path.abspath(".."))
-from Vector import *
+from linear_algebra import *
 
 class TestVectorConstructor(unittest.TestCase):
 
@@ -34,15 +35,15 @@ class TestVectorConstructor(unittest.TestCase):
     self.assertEqual(Vector(iter([1,2,3])).values, [1,2,3])
 
   def test_str(self):
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector("")
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector("1,2,3")
 
   def test_unicode(self):
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector(u"")
-    with self.assertRaises(TypeError):
+    with self.assertRaises(NotImplementedError):
       Vector(u"1,2,3")
 
   def test_float(self):
@@ -260,7 +261,7 @@ class TestVectorOtherMethods(unittest.TestCase):
     with self.assertRaises(ValueError):
       Vector([1,2,3]).cross(Vector([1,2,3,4,5]))
   
-  def test_round(self, ndigits=0):
+  def test_round(self):
     self.assertEqual(Vector([1.34, 4.56, -3.89]).round().values, [1, 5, -4])
     self.assertEqual(Vector([1.34, 4.56, -3.89]).round(1).values, [1.3, 4.6, -3.9])
     self.assertEqual(Vector([1.34, 4.56, -3.89]).round(2).values, [1.34, 4.56, -3.89])
@@ -329,6 +330,18 @@ class TestVectorBuiltinFunctions(unittest.TestCase):
       v[6] = 10
     v[3] = 98
     self.assertEqual(v.values, [14,0,10,98,65])
+
+  def test_sum(self):
+    self.assertEqual(sum(Vector([4,5,3,2])), 14)
+    self.assertEqual(sum([Vector([4,5,3,2]), Vector([1,2,7,6]), Vector([7,1,5,9])]), Vector([12,8,15,17]))
+    with self.assertRaises(TypeError):
+      sum([Vector([4,5,3,2]), 3, Vector([7,1,5,9])])
+    with self.assertRaises(TypeError):
+      sum([Vector([4,5,3,2]), [1,2,7,6], Vector([7,1,5,9])])
+    with self.assertRaises(TypeError):
+      sum([Vector([4,5,3,2]), "1,2,3", Vector([7,1,5,9])])
+    with self.assertRaises(VectorError):
+      sum([Vector([4,5,3,2]), Vector([1,2,7]), Vector([7,1,5,9])])
 
 
 class TestVectorOperators(unittest.TestCase):

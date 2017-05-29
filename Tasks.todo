@@ -1,16 +1,16 @@
 Common:
   ☐ Add comment to the module
-  ☐ Find all magic functions
 
 
 Vector:
   ☐ Add creation of random Vector
-  ☐ Add map method to vector
-  ☐ Add norm method to vector
+  ☐ Add map method
+  ☐ Add norm method
   ☐ Add posibility to set vector components by slice
-  ☐ Add __floordiv__ to vector
-  ☐ Implement sum()
-  ☐ Check vector*matrix
+  ☐ Add __floordiv__
+  ☐ Add __format__(self, formatstr)
+  ☐ Add __copy__
+  ☐ Add __deepcopy__(self, memodict={})
   ☐ Add creation Vector from str
   ☐ Add check ortogonality
   ☐ Add projectTo method
@@ -18,21 +18,38 @@ Vector:
   ☐ Add tolerance to Vector.isZero and Vector.isNormalized
 
 Matrix:
-  ☐ Add unit tests for Matrix
   ☐ Add creation of random Matrix
-  ☐ Add doc strings to Matrix
   ☐ Add creation Matrix from str
-  ☐ Add __floordiv__ to matrix
-  ☐ Convert Matrix.zero method to static method
-  ☐ Add norm method to matrix
-  ☐ Add map method to matrix
+  ☐ Add __floordiv__
+  ☐ Add __pow__
+  ☐ Add __imul__
+  ☐ Add __ifloordiv__
+  ☐ Add __idiv__
+  ☐ Add __ipow__
+  ☐ Add __format__(self, formatstr)
+  ☐ Add __copy__
+  ☐ Add __deepcopy__(self, memodict={})
+  ☐ Add norm method
+  ☐ Add map method
+  ☐ Add isNormalized method
+  ☐ Add normalize method
+  ☐ Add inverse method
+  ☐ Implement eigenvalues for all types of matrices
+  ☐ Add tolerance to Vector.isZero and Vector.isNormalized
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Find all magic functions @done (17-05-22 19:13) @project(Common)
+  ✔ Implement sum() @done (17-05-22 19:12) @project(Vector)
+  ✔ Check vector*matrix @done (17-05-22 19:12) @project(Vector)
+  ✔ Add matrix examples to readme @done (17-05-22 16:50) @project(Common)
+  ✔ Add unit tests @done (17-05-21 17:26) @project(Matrix)
+  ✔ Convert Matrix.zero method to static method @done (17-05-15 17:44) @project(Matrix)
+  ✔ Add doc strings @done (17-05-15 17:44) @project(Matrix)
   ✔ Combine Vector and Matrix to one file @done (17-05-14 21:24) @project(Common)
   ✔ Add examples to readme @done (17-05-14 21:24) @project(Common)
-  ✔ Add unit tests for Vector @done (17-05-13 20:38) @project(Vector)
+  ✔ Add unit tests @done (17-05-13 20:38) @project(Vector)
   ✔ Convert Vector.zero method to static method @done (17-05-10 23:02) @project(Vector)
   ✔ Add Parse method @done (17-05-10 22:56) @project(Vector)
-  ✔ Add doc strings to Vector @done (17-05-07 23:47) @project(Vector)
+  ✔ Add doc strings @done (17-05-07 23:47) @project(Vector)
